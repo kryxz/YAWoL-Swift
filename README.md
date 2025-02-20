@@ -37,7 +37,3 @@ This architecture promotes a clear separation of concerns and streamlines future
 ### watchOS
 ![watchOS Screenshot](https://i.imgur.com/HlUWn2s.png)
 
-
-## License
-
-The MIT License (MIT)
