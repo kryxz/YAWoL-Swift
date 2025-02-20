@@ -29,6 +29,7 @@
 		C3225B4A2D64992F003D0A78 /* Exceptions for "wol" folder in "WoL-iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Intents/WakeDefaultDeviceIntent.swift,
 				Shared/Configuration/CloudKitConfig.swift,
 				Shared/Configuration/Constants.swift,
 				Shared/Models/WOLAppModel.xcdatamodeld,
@@ -44,6 +45,7 @@
 		C3225B842D6499A3003D0A78 /* Exceptions for "wol" folder in "WoL Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Intents/WakeDefaultDeviceIntent.swift,
 				Shared/Configuration/CloudKitConfig.swift,
 				Shared/Configuration/Constants.swift,
 				Shared/Models/WOLAppModel.xcdatamodeld,
