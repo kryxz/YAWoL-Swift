@@ -39,3 +39,5 @@ This architecture promotes a clear separation of concerns and streamlines future
 
 ### Shortcuts
 ![watchOS Screenshot](https://i.imgur.com/Sm3UNZf.png)
+
+<img src="https://i.imgur.com/Sm3UNZf.png" width="319" height="800">
