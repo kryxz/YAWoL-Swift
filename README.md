@@ -29,15 +29,13 @@ This architecture promotes a clear separation of concerns and streamlines future
 ## Screenshots
 
 ### macOS
-![macOS Screenshot](https://i.imgur.com/OxnTGUi.png)
+<img src="https://i.imgur.com/OxnTGUi.png" width="448" height="348" alt="macOS Screenshot">
 
 ### iOS
-![iOS Screenshot](https://i.imgur.com/t7ab3xr.png)
+<img src="https://i.imgur.com/t7ab3xr.png" width="590" height="608" alt="iOS Screenshot">
 
 ### watchOS
 ![watchOS Screenshot](https://i.imgur.com/ILbH9DA.png)
 
 ### Shortcuts
-![watchOS Screenshot](https://i.imgur.com/Sm3UNZf.png)
-
-<img src="https://i.imgur.com/Sm3UNZf.png" width="319" height="800">
+<img src="https://i.imgur.com/Sm3UNZf.png" width="319" height="640" alt="Shortcuts Screenshot">
