@@ -30,6 +30,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Intents/WakeDefaultDeviceIntent.swift,
+				Intents/WakeDeviceIntent.swift,
 				Shared/Configuration/CloudKitConfig.swift,
 				Shared/Configuration/Constants.swift,
 				Shared/Models/WOLAppModel.xcdatamodeld,
@@ -46,6 +47,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Intents/WakeDefaultDeviceIntent.swift,
+				Intents/WakeDeviceIntent.swift,
 				Shared/Configuration/CloudKitConfig.swift,
 				Shared/Configuration/Constants.swift,
 				Shared/Models/WOLAppModel.xcdatamodeld,

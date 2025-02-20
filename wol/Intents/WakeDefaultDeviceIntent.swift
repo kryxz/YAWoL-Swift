@@ -1,5 +1,5 @@
 //
-//  SendMagicPacketIntent.swift
+//  WakeDefaultDeviceIntent.swift
 //  wol
 //
 //  Created by kryx on 2025/02/21.
