@@ -47,7 +47,7 @@ struct DeviceWakeView: View {
                 viewModel.sendWOLPacket()
             })
             {
-                Text("Wake Device")
+                Text("Wake \(viewModel.deviceName)")
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 44)
                     .foregroundColor(.white)

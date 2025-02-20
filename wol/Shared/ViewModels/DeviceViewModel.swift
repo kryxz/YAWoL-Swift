@@ -49,6 +49,11 @@ class DeviceViewModel: ObservableObject {
     
     @Published var sendStatus: SendStatus = .idle
     
+    
+    var deviceName: String {
+        device.name ?? "Device"
+    }
+    
     // Expose the underlying device for editing.
     var deviceForEditing: WOLDevice {
         return device
