@@ -8,7 +8,7 @@ A Wake-On-Lan application built with Swift for macOS, iOS, and watchOS. This app
 - **Wake Devices:** Send wake signals to network-connected devices.
 - **Cross-Platform:** Works seamlessly on macOS, iOS, and watchOS.
 - **CloudKit Integration:** Sync your device configurations using iCloud.
-
+- **Shortcuts Integration:** Integrate with Apple Shortcuts for automation.
 
 ## Architecture
 
@@ -35,5 +35,5 @@ This architecture promotes a clear separation of concerns and streamlines future
 ![iOS Screenshot](https://i.imgur.com/t7ab3xr.png)
 
 ### watchOS
-![watchOS Screenshot](https://i.imgur.com/HlUWn2s.png)
+![watchOS Screenshot](https://i.imgur.com/ILbH9DA.png)
 
