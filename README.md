@@ -29,10 +29,10 @@ This architecture promotes a clear separation of concerns and streamlines future
 ## Screenshots
 
 ### macOS
-<img src="https://i.imgur.com/OxnTGUi.png" width="448" height="348" alt="macOS Screenshot">
+![macOS Screenshot](https://i.imgur.com/OxnTGUi.png)
 
 ### iOS
-<img src="https://i.imgur.com/t7ab3xr.png" width="590" height="608" alt="iOS Screenshot">
+![iOS Screenshot](https://i.imgur.com/t7ab3xr.png)
 
 ### watchOS
 ![watchOS Screenshot](https://i.imgur.com/ILbH9DA.png)
