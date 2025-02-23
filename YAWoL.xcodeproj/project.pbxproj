@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		C3D8785D2D6B1133000F44A0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3D878472D6B1133000F44A0 /* Info.plist */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		C3225B682D649974003D0A78 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -27,7 +23,6 @@
 		C3225AC62D633932003D0A78 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3225B3A2D649916003D0A78 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3225B6D2D64998E003D0A78 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3D878472D6B1133000F44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -169,7 +164,6 @@
 		C3225ABD2D633932003D0A78 = {
 			isa = PBXGroup;
 			children = (
-				C3D878472D6B1133000F44A0 /* Info.plist */,
 				C3D878942D6B115D000F44A0 /* Shared */,
 				C3D878AE2D6B1252000F44A0 /* Intents */,
 				C3D878BE2D6B1257000F44A0 /* macOS */,
@@ -280,7 +274,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C3225AC12D633932003D0A78 /* Build configuration list for PBXProject "wol" */;
+			buildConfigurationList = C3225AC12D633932003D0A78 /* Build configuration list for PBXProject "YAWoL" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -306,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3D8785D2D6B1133000F44A0 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +467,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/wol.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "macOS/SwiftWOL-macOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -504,7 +498,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/wol.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "macOS/SwiftWOL-macOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -670,7 +665,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C3225AC12D633932003D0A78 /* Build configuration list for PBXProject "wol" */ = {
+		C3225AC12D633932003D0A78 /* Build configuration list for PBXProject "YAWoL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3225AD32D633934003D0A78 /* Debug */,
