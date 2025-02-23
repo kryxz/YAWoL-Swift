@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C3D8785D2D6B1133000F44A0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3D878472D6B1133000F44A0 /* Info.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C3225B682D649974003D0A78 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,65 +24,120 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C3225AC62D633932003D0A78 /* wol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wol.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3225B3A2D649916003D0A78 /* WoL-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WoL-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3225B6D2D64998E003D0A78 /* WoL Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WoL Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3225AC62D633932003D0A78 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3225B3A2D649916003D0A78 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3225B6D2D64998E003D0A78 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D878472D6B1133000F44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C3225B4A2D64992F003D0A78 /* Exceptions for "wol" folder in "WoL-iOS" target */ = {
+		C3D8789C2D6B11E5000F44A0 /* Exceptions for "iOS" folder in "iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Intents/WakeDefaultDeviceIntent.swift,
-				Intents/WakeDeviceIntent.swift,
-				Shared/Configuration/CloudKitConfig.swift,
-				Shared/Configuration/Constants.swift,
-				Shared/Models/WOLAppModel.xcdatamodeld,
-				Shared/Persistence/Persistence.swift,
-				"Shared/Utilities/String+isValidMacAddress.swift",
-				Shared/Utilities/WakeOnLan.swift,
-				Shared/ViewModels/DevicesListViewModel.swift,
-				Shared/ViewModels/DeviceViewModel.swift,
-				Shared/Views/MACAddressInputFieldSection.swift,
+				"App/SwiftWOL-iOS.swift",
+				Assets.xcassets,
+				"Preview Content/Preview Assets.xcassets",
+				Views/AddDeviceView.swift,
+				Views/DefaultDeviceView.swift,
+				Views/DeviceFormView.swift,
+				Views/DeviceRowView.swift,
+				Views/HomeView.swift,
+				Views/LabeledTextFieldWithTooltip.swift,
+				Views/ToggleComputerIconView.swift,
 			);
-			target = C3225B392D649916003D0A78 /* WoL-iOS */;
+			target = C3225B392D649916003D0A78 /* iOS */;
 		};
-		C3225B842D6499A3003D0A78 /* Exceptions for "wol" folder in "WoL Watch App" target */ = {
+		C3D878A92D6B1219000F44A0 /* Exceptions for "Shared" folder in "macOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Intents/WakeDefaultDeviceIntent.swift,
-				Intents/WakeDeviceIntent.swift,
-				Shared/Configuration/CloudKitConfig.swift,
-				Shared/Configuration/Constants.swift,
-				Shared/Models/WOLAppModel.xcdatamodeld,
-				Shared/Persistence/Persistence.swift,
-				"Shared/Utilities/String+isValidMacAddress.swift",
-				Shared/Utilities/WakeOnLan.swift,
-				Shared/ViewModels/DevicesListViewModel.swift,
-				Shared/ViewModels/DeviceViewModel.swift,
+				Configuration/CloudKitConfig.swift,
+				Configuration/Constants.swift,
+				Models/WOLAppModel.xcdatamodeld,
+				Persistence/Persistence.swift,
+				"Utilities/String+isValidMacAddress.swift",
+				Utilities/WakeOnLan.swift,
+				ViewModels/DevicesListViewModel.swift,
+				ViewModels/DeviceViewModel.swift,
+				Views/MACAddressInputFieldSection.swift,
 			);
-			target = C3225B6C2D64998E003D0A78 /* WoL Watch App */;
+			target = C3225AC52D633932003D0A78 /* macOS */;
+		};
+		C3D878AA2D6B1219000F44A0 /* Exceptions for "Shared" folder in "iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Configuration/CloudKitConfig.swift,
+				Configuration/Constants.swift,
+				Models/WOLAppModel.xcdatamodeld,
+				Persistence/Persistence.swift,
+				"Utilities/String+isValidMacAddress.swift",
+				Utilities/WakeOnLan.swift,
+				ViewModels/DevicesListViewModel.swift,
+				ViewModels/DeviceViewModel.swift,
+				Views/MACAddressInputFieldSection.swift,
+			);
+			target = C3225B392D649916003D0A78 /* iOS */;
+		};
+		C3D878AB2D6B1236000F44A0 /* Exceptions for "Shared" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Views/MACAddressInputFieldSection.swift,
+			);
+			target = C3225B6C2D64998E003D0A78 /* watchOS */;
+		};
+		C3D878B52D6B1252000F44A0 /* Exceptions for "Intents" folder in "iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WakeDefaultDeviceIntent.swift,
+				WakeDeviceIntent.swift,
+			);
+			target = C3225B392D649916003D0A78 /* iOS */;
+		};
+		C3D878B62D6B1252000F44A0 /* Exceptions for "Intents" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WakeDefaultDeviceIntent.swift,
+				WakeDeviceIntent.swift,
+			);
+			target = C3225B6C2D64998E003D0A78 /* watchOS */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C3225AC82D633932003D0A78 /* wol */ = {
+		C3D878942D6B115D000F44A0 /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				C3225B4A2D64992F003D0A78 /* Exceptions for "wol" folder in "WoL-iOS" target */,
-				C3225B842D6499A3003D0A78 /* Exceptions for "wol" folder in "WoL Watch App" target */,
+				C3D878A92D6B1219000F44A0 /* Exceptions for "Shared" folder in "macOS" target */,
+				C3D878AA2D6B1219000F44A0 /* Exceptions for "Shared" folder in "iOS" target */,
+				C3D878AB2D6B1236000F44A0 /* Exceptions for "Shared" folder in "watchOS" target */,
 			);
-			path = wol;
+			path = Shared;
 			sourceTree = "<group>";
 		};
-		C3225B3B2D649916003D0A78 /* WoL-iOS */ = {
+		C3D8789B2D6B11D1000F44A0 /* iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "WoL-iOS";
+			exceptions = (
+				C3D8789C2D6B11E5000F44A0 /* Exceptions for "iOS" folder in "iOS" target */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
-		C3225B6E2D64998E003D0A78 /* WoL Watch App */ = {
+		C3D8789E2D6B11FE000F44A0 /* watchOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "WoL Watch App";
+			path = watchOS;
+			sourceTree = "<group>";
+		};
+		C3D878AE2D6B1252000F44A0 /* Intents */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C3D878B52D6B1252000F44A0 /* Exceptions for "Intents" folder in "iOS" target */,
+				C3D878B62D6B1252000F44A0 /* Exceptions for "Intents" folder in "watchOS" target */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		C3D878BE2D6B1257000F44A0 /* macOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -111,19 +170,22 @@
 		C3225ABD2D633932003D0A78 = {
 			isa = PBXGroup;
 			children = (
-				C3225AC82D633932003D0A78 /* wol */,
-				C3225B3B2D649916003D0A78 /* WoL-iOS */,
-				C3225B6E2D64998E003D0A78 /* WoL Watch App */,
+				C3D878472D6B1133000F44A0 /* Info.plist */,
+				C3D878942D6B115D000F44A0 /* Shared */,
+				C3D878AE2D6B1252000F44A0 /* Intents */,
+				C3D878BE2D6B1257000F44A0 /* macOS */,
 				C3225AC72D633932003D0A78 /* Products */,
+				C3D8789B2D6B11D1000F44A0 /* iOS */,
+				C3D8789E2D6B11FE000F44A0 /* watchOS */,
 			);
 			sourceTree = "<group>";
 		};
 		C3225AC72D633932003D0A78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C3225AC62D633932003D0A78 /* wol.app */,
-				C3225B3A2D649916003D0A78 /* WoL-iOS.app */,
-				C3225B6D2D64998E003D0A78 /* WoL Watch App.app */,
+				C3225AC62D633932003D0A78 /* macOS.app */,
+				C3225B3A2D649916003D0A78 /* iOS.app */,
+				C3225B6D2D64998E003D0A78 /* watchOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C3225AC52D633932003D0A78 /* wol */ = {
+		C3225AC52D633932003D0A78 /* macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3225AD52D633934003D0A78 /* Build configuration list for PBXNativeTarget "wol" */;
+			buildConfigurationList = C3225AD52D633934003D0A78 /* Build configuration list for PBXNativeTarget "macOS" */;
 			buildPhases = (
 				C3225AC22D633932003D0A78 /* Sources */,
 				C3225AC32D633932003D0A78 /* Frameworks */,
@@ -145,18 +207,19 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C3225AC82D633932003D0A78 /* wol */,
+				C3D878AE2D6B1252000F44A0 /* Intents */,
+				C3D878BE2D6B1257000F44A0 /* macOS */,
 			);
-			name = wol;
+			name = macOS;
 			packageProductDependencies = (
 			);
 			productName = wol;
-			productReference = C3225AC62D633932003D0A78 /* wol.app */;
+			productReference = C3225AC62D633932003D0A78 /* macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C3225B392D649916003D0A78 /* WoL-iOS */ = {
+		C3225B392D649916003D0A78 /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3225B452D649917003D0A78 /* Build configuration list for PBXNativeTarget "WoL-iOS" */;
+			buildConfigurationList = C3225B452D649917003D0A78 /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
 				C3225B362D649916003D0A78 /* Sources */,
 				C3225B372D649916003D0A78 /* Frameworks */,
@@ -166,19 +229,16 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				C3225B3B2D649916003D0A78 /* WoL-iOS */,
-			);
-			name = "WoL-iOS";
+			name = iOS;
 			packageProductDependencies = (
 			);
 			productName = "WoL-iOS";
-			productReference = C3225B3A2D649916003D0A78 /* WoL-iOS.app */;
+			productReference = C3225B3A2D649916003D0A78 /* iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C3225B6C2D64998E003D0A78 /* WoL Watch App */ = {
+		C3225B6C2D64998E003D0A78 /* watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3225B782D64998F003D0A78 /* Build configuration list for PBXNativeTarget "WoL Watch App" */;
+			buildConfigurationList = C3225B782D64998F003D0A78 /* Build configuration list for PBXNativeTarget "watchOS" */;
 			buildPhases = (
 				C3225B692D64998E003D0A78 /* Sources */,
 				C3225B6A2D64998E003D0A78 /* Frameworks */,
@@ -189,13 +249,15 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C3225B6E2D64998E003D0A78 /* WoL Watch App */,
+				C3D878942D6B115D000F44A0 /* Shared */,
+				C3D8789B2D6B11D1000F44A0 /* iOS */,
+				C3D8789E2D6B11FE000F44A0 /* watchOS */,
 			);
-			name = "WoL Watch App";
+			name = watchOS;
 			packageProductDependencies = (
 			);
 			productName = "WoL Watch App";
-			productReference = C3225B6D2D64998E003D0A78 /* WoL Watch App.app */;
+			productReference = C3225B6D2D64998E003D0A78 /* watchOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -233,9 +295,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C3225AC52D633932003D0A78 /* wol */,
-				C3225B392D649916003D0A78 /* WoL-iOS */,
-				C3225B6C2D64998E003D0A78 /* WoL Watch App */,
+				C3225AC52D633932003D0A78 /* macOS */,
+				C3225B392D649916003D0A78 /* iOS */,
+				C3225B6C2D64998E003D0A78 /* watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D8785D2D6B1133000F44A0 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,11 +475,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = wol/wol.entitlements;
+				CODE_SIGN_ENTITLEMENTS = macOS/wol.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wol/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -442,11 +505,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = wol/wol.entitlements;
+				CODE_SIGN_ENTITLEMENTS = macOS/wol.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wol/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -472,10 +535,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WoL-iOS/WoL-iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/WoL-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WoL-iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -509,10 +572,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WoL-iOS/WoL-iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/WoL-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WoL-iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -547,10 +610,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WoL Watch App/WoL Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "watchOS/WoL Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WoL Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"watchOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -578,10 +641,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WoL Watch App/WoL Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "watchOS/WoL Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WoL Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"watchOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 74H748Y22K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -617,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3225AD52D633934003D0A78 /* Build configuration list for PBXNativeTarget "wol" */ = {
+		C3225AD52D633934003D0A78 /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3225AD62D633934003D0A78 /* Debug */,
@@ -626,7 +689,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3225B452D649917003D0A78 /* Build configuration list for PBXNativeTarget "WoL-iOS" */ = {
+		C3225B452D649917003D0A78 /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3225B462D649917003D0A78 /* Debug */,
@@ -635,7 +698,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3225B782D64998F003D0A78 /* Build configuration list for PBXNativeTarget "WoL Watch App" */ = {
+		C3225B782D64998F003D0A78 /* Build configuration list for PBXNativeTarget "watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3225B792D64998F003D0A78 /* Debug */,
