@@ -1,7 +1,6 @@
-# Wake-On-Lan App
+# YAWoL (Yet Another Wake-on-LAN)
 
-A Wake-On-Lan application built with Swift for macOS, iOS, and watchOS. This app allows you to send wake signals to your devices over the network and manage them with an intuitive interface.
-
+The app I was using stopped showing up in Shortcuts and Siri, so I built YAWoL as a an alternative. This app sends magic packets to gently wake up your devices on macOS, iOS, and watchOS.
 
 ## Features
 
@@ -10,32 +9,43 @@ A Wake-On-Lan application built with Swift for macOS, iOS, and watchOS. This app
 - **CloudKit Integration:** Sync your device configurations using iCloud.
 - **Shortcuts Integration:** Integrate with Apple Shortcuts for automation.
 
+## Project Structure
+
+The project is organized into four main components:
+
+- **Shared:** Core functionality shared across all platforms (models, viewmodels, utilities)
+- **iOS:** iOS-specific implementation and views
+- **macOS:** macOS-specific implementation and views
+- **watchOS:** watchOS-specific implementation and views
+
 ## Architecture
 
-The project is designed with modularity and code reuse in mind:
+This is one of my attempts tackling the KISS (Keep It Simple, Stupid) and DRY (Don't Repeat Yourself) principles. The Apple ecosystem certainly helps with both.
 
 - **Shared Module:**  
-In the Shared folder, you’ll find all the core stuff—configurations, data models, persistence, utilities, and view models. This code is shared across all platforms to keep things consistent and avoid repeating yourself.
+All core functionality—configurations, data models, persistence, utilities, and shared view models—into one place.
 
-- **Platform-Specific:**  
-  - **macOS:** Check out the `macOS` folder (inside the main wol directory) for macOS-specific UI bits like the AppDelegate, StatusBarController, and custom views.
-  - **iOS:** The `WoL-iOS` folder holds code and views tailored for a mobile experience.
-  - **watchOS:** The `WoL Watch App` folder has lightweight interfaces designed just for watchOS.
+- **Platform-Specific Modules:**  
+  - Platform-specific app setup
+  - Custom UI implementations
+  - Platform-specific features and optimizations
 
-This architecture promotes a clear separation of concerns and streamlines future enhancements and maintenance.
-
-
+This modular approach not only simplifies the codebase but also makes maintenance and platform-specific enhancements a breeze.
 
 ## Screenshots
 
 ### macOS
+
 ![macOS Screenshot](https://i.imgur.com/OxnTGUi.png)
 
 ### iOS
+
 ![iOS Screenshot](https://i.imgur.com/t7ab3xr.png)
 
 ### watchOS
+
 ![watchOS Screenshot](https://i.imgur.com/ILbH9DA.png)
 
 ### Shortcuts
-<img src="https://i.imgur.com/Sm3UNZf.png" width="319" height="640" alt="Shortcuts Screenshot">
+
+![Shortcuts Screenshot](https://i.imgur.com/BLCeQ7M.png)
