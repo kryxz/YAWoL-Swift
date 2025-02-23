@@ -1,6 +1,6 @@
 # YAWoL (Yet Another Wake-on-LAN)
 
-The app I was using stopped showing up in Shortcuts and Siri, so I built YAWoL as a an alternative. This app sends magic packets to gently wake up your devices on macOS, iOS, and watchOS.
+The app I was using stopped showing up in Shortcuts and Siri, so I built YAWoL as a an alternative. This app sends magic packets to gently wake up your devices. Works and syncs between macOS, iOS, and watchOS.
 
 ## Features
 
