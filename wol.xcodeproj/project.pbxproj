@@ -36,7 +36,6 @@
 			membershipExceptions = (
 				"App/SwiftWOL-iOS.swift",
 				Assets.xcassets,
-				"Preview Content/Preview Assets.xcassets",
 				Views/AddDeviceView.swift,
 				Views/DefaultDeviceView.swift,
 				Views/DeviceFormView.swift,
