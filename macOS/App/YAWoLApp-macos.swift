@@ -1,5 +1,5 @@
 //
-//  SwiftWOL-macos.swift
+//  YAWoLApp-macos.swift
 //  YAWoL macOS
 //
 //  Created by kryx on 2025/02/18.

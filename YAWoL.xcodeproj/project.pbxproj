@@ -29,7 +29,7 @@
 		C35B19F52D6CD9AF00B714D8 /* Exceptions for "iOS" folder in "watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"App/SwiftWOL-iOS.swift",
+				"App/YAWoLApp-iOS.swift",
 				Assets.xcassets,
 				"Preview Content/.gitkeep",
 				Views/AddDeviceView.swift,
@@ -59,7 +59,7 @@
 		C3D8789C2D6B11E5000F44A0 /* Exceptions for "iOS" folder in "iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"App/SwiftWOL-iOS.swift",
+				"App/YAWoLApp-iOS.swift",
 				Assets.xcassets,
 				Views/AddDeviceView.swift,
 				Views/DefaultDeviceView.swift,
@@ -76,7 +76,7 @@
 			membershipExceptions = (
 				Configuration/CloudKitConfig.swift,
 				Configuration/Constants.swift,
-				Models/WOLAppModel.xcdatamodeld,
+				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
 				"Utilities/String+isValidMacAddress.swift",
 				Utilities/WakeOnLan.swift,
@@ -91,7 +91,7 @@
 			membershipExceptions = (
 				Configuration/CloudKitConfig.swift,
 				Configuration/Constants.swift,
-				Models/WOLAppModel.xcdatamodeld,
+				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
 				"Utilities/String+isValidMacAddress.swift",
 				Utilities/WakeOnLan.swift,
