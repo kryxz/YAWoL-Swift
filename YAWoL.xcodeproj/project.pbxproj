@@ -31,6 +31,7 @@
 			membershipExceptions = (
 				"App/SwiftWOL-iOS.swift",
 				Assets.xcassets,
+				"Preview Content/.gitkeep",
 				Views/AddDeviceView.swift,
 				Views/DefaultDeviceView.swift,
 				Views/DeviceFormView.swift,
@@ -40,6 +41,20 @@
 				Views/ToggleComputerIconView.swift,
 			);
 			target = C3225B6C2D64998E003D0A78 /* watchOS */;
+		};
+		C35B19FD2D6CDF3400B714D8 /* Exceptions for "watchOS" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Preview Content/.gitkeep",
+			);
+			target = C3225B6C2D64998E003D0A78 /* watchOS */;
+		};
+		C35B19FE2D6CDF3C00B714D8 /* Exceptions for "macOS" folder in "macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Preview Content/.gitkeep",
+			);
+			target = C3225AC52D633932003D0A78 /* macOS */;
 		};
 		C3D8789C2D6B11E5000F44A0 /* Exceptions for "iOS" folder in "iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -133,6 +148,9 @@
 		};
 		C3D8789E2D6B11FE000F44A0 /* watchOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C35B19FD2D6CDF3400B714D8 /* Exceptions for "watchOS" folder in "watchOS" target */,
+			);
 			path = watchOS;
 			sourceTree = "<group>";
 		};
@@ -147,6 +165,9 @@
 		};
 		C3D878BE2D6B1257000F44A0 /* macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C35B19FE2D6CDF3C00B714D8 /* Exceptions for "macOS" folder in "macOS" target */,
+			);
 			path = macOS;
 			sourceTree = "<group>";
 		};
