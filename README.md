@@ -4,28 +4,19 @@ The app I was using stopped showing up in Shortcuts and Siri, so I built YAWoL a
 
 ## Features
 
-- **Wake Devices:** Send wake signals to network-connected devices.
-- **Cross-Platform:** Works seamlessly on macOS, iOS, and watchOS.
-- **CloudKit Integration:** Sync your device configurations using iCloud.
-- **Shortcuts Integration:** Integrate with Apple Shortcuts for automation.
+- **Wake Devices:** Send magic packets to wake devices.
+- **Cross-Platform:** Runs on macOS, iOS, & watchOS.
+- **CloudKit:** Sync devices via iCloud.
+- **Shortcuts:** Automate with Apple Shortcuts.
 
-## Project Structure
-
-The project is organized into four main components:
-
-- **Shared:** Core functionality shared across all platforms (models, viewmodels, utilities)
-- **iOS:** iOS-specific implementation and views
-- **macOS:** macOS-specific implementation and views
-- **watchOS:** watchOS-specific implementation and views
-
-## Architecture
+## Structure
 
 This is one of my attempts tackling the KISS (Keep It Simple, Stupid) and DRY (Don't Repeat Yourself) principles. The Apple ecosystem certainly helps with both.
 
-- **Shared Module:**  
+- **Shared Module:**
 All core functionality—configurations, data models, persistence, utilities, and shared view models—into one place.
 
-- **Platform-Specific Modules:**  
+- **Platform-Specific Modules:**
   - Platform-specific app setup
   - Custom UI implementations
   - Platform-specific features and optimizations
