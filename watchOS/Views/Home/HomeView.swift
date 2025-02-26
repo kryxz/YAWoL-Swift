@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     // Fetch devices sorted by name.
@@ -38,43 +38,6 @@ struct ContentView: View {
     }
 }
 
-struct DeviceWakeView: View {
-    @ObservedObject var viewModel: DeviceViewModel
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                viewModel.sendWOLPacket()
-            })
-            {
-                Text("Wake \(viewModel.deviceName)")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, minHeight: 44)
-                    .foregroundColor(.white)
-            }
-            .foregroundColor(Color.green)
-            .cornerRadius(8)
-            .padding()
-
-            Group {
-                switch viewModel.sendStatus {
-                case .idle:
-                    EmptyView()
-                case .sending:
-                    Text("Sending...")
-                        .foregroundColor(.blue)
-                case .success:
-                    Text("WOL packet sent successfully!")
-                        .foregroundColor(.green)
-                case .failure(let error):
-                    Text("Failed to send WOL packet: \(error)")
-                        .foregroundColor(.red)
-                }
-            }
-        }
-        .padding()
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -96,7 +59,7 @@ struct ContentView_Previews: PreviewProvider {
             print("Error saving preview context: \(error)")
         }
         
-        return ContentView()
+        return HomeView()
             .environment(\.managedObjectContext, context)
     }
 }
