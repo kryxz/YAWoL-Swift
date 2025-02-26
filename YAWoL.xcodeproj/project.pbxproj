@@ -38,6 +38,7 @@
 				Views/DeviceRowView.swift,
 				Views/HomeView.swift,
 				Views/LabeledTextFieldWithTooltip.swift,
+				Views/MACAddressInputFieldSection.swift,
 				Views/ToggleComputerIconView.swift,
 			);
 			target = C3225B6C2D64998E003D0A78 /* watchOS */;
@@ -67,6 +68,7 @@
 				Views/DeviceRowView.swift,
 				Views/HomeView.swift,
 				Views/LabeledTextFieldWithTooltip.swift,
+				Views/MACAddressInputFieldSection.swift,
 				Views/ToggleComputerIconView.swift,
 			);
 			target = C3225B392D649916003D0A78 /* iOS */;
@@ -78,11 +80,10 @@
 				Configuration/Constants.swift,
 				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
+				Services/WakeOnLan.swift,
 				"Utilities/String+isValidMacAddress.swift",
-				Utilities/WakeOnLan.swift,
 				ViewModels/DevicesListViewModel.swift,
 				ViewModels/DeviceViewModel.swift,
-				Views/MACAddressInputFieldSection.swift,
 			);
 			target = C3225AC52D633932003D0A78 /* macOS */;
 		};
@@ -93,20 +94,12 @@
 				Configuration/Constants.swift,
 				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
+				Services/WakeOnLan.swift,
 				"Utilities/String+isValidMacAddress.swift",
-				Utilities/WakeOnLan.swift,
 				ViewModels/DevicesListViewModel.swift,
 				ViewModels/DeviceViewModel.swift,
-				Views/MACAddressInputFieldSection.swift,
 			);
 			target = C3225B392D649916003D0A78 /* iOS */;
-		};
-		C3D878AB2D6B1236000F44A0 /* Exceptions for "Shared" folder in "watchOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Views/MACAddressInputFieldSection.swift,
-			);
-			target = C3225B6C2D64998E003D0A78 /* watchOS */;
 		};
 		C3D878B52D6B1252000F44A0 /* Exceptions for "Intents" folder in "iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -132,7 +125,6 @@
 			exceptions = (
 				C3D878A92D6B1219000F44A0 /* Exceptions for "Shared" folder in "macOS" target */,
 				C3D878AA2D6B1219000F44A0 /* Exceptions for "Shared" folder in "iOS" target */,
-				C3D878AB2D6B1236000F44A0 /* Exceptions for "Shared" folder in "watchOS" target */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
