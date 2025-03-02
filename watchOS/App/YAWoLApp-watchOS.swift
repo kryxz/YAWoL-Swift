@@ -15,7 +15,7 @@ struct WatchApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

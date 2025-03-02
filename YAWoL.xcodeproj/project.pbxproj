@@ -32,14 +32,14 @@
 				"App/YAWoLApp-iOS.swift",
 				Assets.xcassets,
 				"Preview Content/.gitkeep",
-				Views/AddDeviceView.swift,
-				Views/DefaultDeviceView.swift,
-				Views/DeviceFormView.swift,
-				Views/DeviceRowView.swift,
-				Views/HomeView.swift,
-				Views/LabeledTextFieldWithTooltip.swift,
-				Views/MACAddressInputFieldSection.swift,
-				Views/ToggleComputerIconView.swift,
+				Views/Components/LabeledTextFieldWithTooltip.swift,
+				Views/Components/MACAddressInputFieldSection.swift,
+				Views/Components/ToggleComputerIconView.swift,
+				Views/Device/AddDeviceView.swift,
+				Views/Device/DefaultDeviceView.swift,
+				Views/Device/DeviceFormView.swift,
+				Views/Device/DeviceRowView.swift,
+				Views/Home/HomeView.swift,
 			);
 			target = C3225B6C2D64998E003D0A78 /* watchOS */;
 		};
@@ -62,14 +62,14 @@
 			membershipExceptions = (
 				"App/YAWoLApp-iOS.swift",
 				Assets.xcassets,
-				Views/AddDeviceView.swift,
-				Views/DefaultDeviceView.swift,
-				Views/DeviceFormView.swift,
-				Views/DeviceRowView.swift,
-				Views/HomeView.swift,
-				Views/LabeledTextFieldWithTooltip.swift,
-				Views/MACAddressInputFieldSection.swift,
-				Views/ToggleComputerIconView.swift,
+				Views/Components/LabeledTextFieldWithTooltip.swift,
+				Views/Components/MACAddressInputFieldSection.swift,
+				Views/Components/ToggleComputerIconView.swift,
+				Views/Device/AddDeviceView.swift,
+				Views/Device/DefaultDeviceView.swift,
+				Views/Device/DeviceFormView.swift,
+				Views/Device/DeviceRowView.swift,
+				Views/Home/HomeView.swift,
 			);
 			target = C3225B392D649916003D0A78 /* iOS */;
 		};
