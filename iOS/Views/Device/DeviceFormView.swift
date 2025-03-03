@@ -3,7 +3,7 @@ import SwiftUI
 struct DeviceFormView: View {
     @Binding var name: String
     @Binding var macAddress: String
-    @Binding var broadcastAddress: String
+    @Binding var ipAddress: String
     @Binding var port: String
 
     var deviceNameSuggestion: String {
@@ -37,10 +37,10 @@ struct DeviceFormView: View {
             )
             
             InputFieldSection(
-                header: "BROADCAST ADDRESS",
-                placeholder: "Enter Broadcast Address",
-                tip: "Enter your network's broadcast address. For most, '255.255.255.255' works, but you may need your subnet's specific broadcast (e.g., 192.168.1.255).",
-                text: $broadcastAddress
+                header: "IP ADDRESS",
+                placeholder: "Enter IP Address",
+                tip: "Enter your device's ip address. You can try without the ip address, but entering this ensures it works 100% of the time",
+                text: $ipAddress
             )
             
             InputFieldSection(

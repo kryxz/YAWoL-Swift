@@ -46,9 +46,9 @@ struct ContentView_Previews: PreviewProvider {
         
         // Create a test device for preview purposes.
         let testDevice = WOLDevice(context: context)
-        testDevice.name = "Test Device"
+        testDevice.name = "Ze Device"
         testDevice.macAddress = "AA:BB:CC:DD:EE:FF"
-        testDevice.broadcastAddress = Constants.defaultBroadcastAddress
+        testDevice.ipAddress = Constants.defaultIpAddress
         testDevice.port = 9
         testDevice.isDefault = true
         

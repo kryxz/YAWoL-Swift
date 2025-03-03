@@ -134,7 +134,7 @@ struct DeviceRowView_Previews: PreviewProvider {
         let device = WOLDevice(context: context)
         device.name = Constants.defaultDeviceName
         device.macAddress = Constants.defaultMacAddress
-        device.broadcastAddress = Constants.defaultBroadcastAddress
+        device.ipAddress = Constants.defaultIpAddress
         device.port = Constants.defaultPort
         device.isDefault = false
         return DeviceRowView(device: device)

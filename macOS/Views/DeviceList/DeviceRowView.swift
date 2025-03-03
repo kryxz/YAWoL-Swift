@@ -8,7 +8,7 @@ struct DeviceRowView: View {
     
     // Focus state for text fields.
     enum Field: Hashable {
-        case name, mac, broadcast, port
+        case name, mac, ip, port
     }
     @FocusState private var focusedField: Field?
     
@@ -79,9 +79,9 @@ struct DeviceRowView: View {
                     
                     if showAdvancedSettings {
                         VStack(alignment: .leading, spacing: 8) {
-                            TextField("Broadcast Address", text: $viewModel.broadcastAddress)
+                            TextField("IP Address", text: $viewModel.ipAddress)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .focused($focusedField, equals: .broadcast)
+                                .focused($focusedField, equals: .ip)
                             TextField("Port", value: $viewModel.port, formatter: NumberFormatter())
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .focused($focusedField, equals: .port)
@@ -171,7 +171,7 @@ struct DeviceRowView_Previews: PreviewProvider {
         let device = WOLDevice(context: context)
         device.name = Constants.defaultDeviceName
         device.macAddress = Constants.defaultMacAddress
-        device.broadcastAddress = Constants.defaultBroadcastAddress
+        device.ipAddress = Constants.defaultIpAddress
         device.port = Constants.defaultPort
         // For preview, you might want to test both states:
         device.isDefault = false
