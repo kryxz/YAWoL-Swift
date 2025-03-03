@@ -7,6 +7,7 @@
 
 import AppIntents
 import SwiftUI
+import CoreData
 
 struct WakeDeviceIntent: AppIntent {
     static var title: LocalizedStringResource = "Wake Device"
