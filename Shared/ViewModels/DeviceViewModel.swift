@@ -124,7 +124,7 @@ class DeviceViewModel: ObservableObject {
         
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let result = WakeOnLan.send(to: self.device, subnetMask: "")
+            let result = WakeOnLan.send(to: self.device)
             DispatchQueue.main.async {
                 switch result {
                 case .success:
