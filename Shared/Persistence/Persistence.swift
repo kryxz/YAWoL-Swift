@@ -7,7 +7,7 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "WOLAppModel")
+        container = NSPersistentCloudKitContainer(name: "YAWoLModel")
         
         if let description = container.persistentStoreDescriptions.first {
             // Enable history tracking and remote change notifications.
