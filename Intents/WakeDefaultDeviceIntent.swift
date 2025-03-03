@@ -31,21 +31,9 @@ struct WakeDefaultDeviceIntent: AppIntent {
                 userInfo: [NSLocalizedDescriptionKey: "No default device set."]
             )
         }
+                
         
-        let mac = device.macAddress ?? ""
-        guard mac.isValidMacAddress else {
-            throw NSError(
-                domain: "WakeDefaultDeviceIntent",
-                code: 2,
-                userInfo: [NSLocalizedDescriptionKey: "Invalid MAC address."]
-            )
-        }
-        
-        let broadcast = (device.broadcastAddress?.isEmpty ?? true) ? Constants.defaultBroadcastAddress : device.broadcastAddress!
-        let port = (device.port == 0) ? Constants.defaultPort : device.port
-        
-        let wolDevice = WakeOnLan.Device(mac: mac, broadcastAddress: broadcast, port: port)
-        let result = WakeOnLan.send(to: wolDevice)
+        let result = WakeOnLan.send(to: device)
         
         
         switch result {
