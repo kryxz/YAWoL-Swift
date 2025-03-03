@@ -91,6 +91,16 @@ public class WakeOnLan {
         // 6. Determine port
         let port = device.port == 0 ? Constants.defaultPort : device.port
         
+        
+        print("""
+              Preparing to send WOL packet:
+              MAC: \(macAddress)
+              IP: \(finalIPAddress)
+              Subnet: \(subnet)
+              Broadcast: \(broadcastAddress)
+              Port: \(port)
+              """)
+        
         // 7. Send out the magic packet
         return sendMagicPacket(macAddress: macAddress,
                                broadcastAddress: broadcastAddress,
