@@ -21,8 +21,7 @@ struct WakeDeviceIntent: AppIntent {
     
     @Parameter(
         title: "IP Address",
-        description: "The IP address to send the magic packet to.",
-        default: ""
+        description: "The IP address to send the magic packet to."
     )
     var ipAddress: String
     
@@ -36,6 +35,14 @@ struct WakeDeviceIntent: AppIntent {
             )
         }
         
+        guard !ipAddress.isEmpty else {
+            throw NSError(
+                domain: "WakeDeviceIntent",
+                code: 4,
+                userInfo: [NSLocalizedDescriptionKey: "Invalid or missing IP address."]
+            )
+        }
+
         
         let context = PersistenceController.shared.container.viewContext
         
