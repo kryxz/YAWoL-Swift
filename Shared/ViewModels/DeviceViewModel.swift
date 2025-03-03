@@ -4,7 +4,7 @@ import CoreData
 class DeviceViewModel: ObservableObject {
     @Published var name: String
     @Published var macAddress: String
-    @Published var broadcastAddress: String
+    @Published var ipAddress: String
     @Published var port: Int16
     @Published var isEditing: Bool = false
 
@@ -17,7 +17,7 @@ class DeviceViewModel: ObservableObject {
         // Instead of copying the values, you might observe changes on `device`.
         self.name = device.name ?? ""
         self.macAddress = device.macAddress ?? ""
-        self.broadcastAddress = device.broadcastAddress ?? Constants.defaultBroadcastAddress
+        self.ipAddress = device.ipAddress ?? ""
         self.port = device.port == 0 ? Constants.defaultPort : device.port
         
         // Subscribe to changes on the device if needed.
@@ -35,7 +35,7 @@ class DeviceViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.name = self.device.name ?? ""
             self.macAddress = self.device.macAddress ?? ""
-            self.broadcastAddress = self.device.broadcastAddress ?? Constants.defaultBroadcastAddress
+            self.ipAddress = self.device.ipAddress ?? ""
             self.port = self.device.port == 0 ? Constants.defaultPort : self.device.port
             self.objectWillChange.send()
         }
@@ -71,7 +71,7 @@ class DeviceViewModel: ObservableObject {
         if macAddress.isValidMacAddress {
             device.name = name
             device.macAddress = macAddress
-            device.broadcastAddress = broadcastAddress
+            device.ipAddress = ipAddress
             device.port = port
             do {
                 try context.save()
@@ -90,7 +90,7 @@ class DeviceViewModel: ObservableObject {
         } else {
             name = device.name ?? ""
             macAddress = device.macAddress ?? ""
-            broadcastAddress = device.broadcastAddress ?? Constants.defaultBroadcastAddress
+            ipAddress = device.ipAddress ?? ""
             port = device.port == 0 ? Constants.defaultPort : device.port
             isEditing = false
         }
@@ -122,11 +122,9 @@ class DeviceViewModel: ObservableObject {
             self.sendStatus = .sending
         }
         
-        let broadcast = broadcastAddress.isEmpty ? Constants.defaultBroadcastAddress : broadcastAddress
-        let wolDevice = WakeOnLan.Device(mac: macAddress, broadcastAddress: broadcast, port: port)
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let result = WakeOnLan.send(to: wolDevice)
+            let result = WakeOnLan.send(to: self.device, subnetMask: "")
             DispatchQueue.main.async {
                 switch result {
                 case .success:
