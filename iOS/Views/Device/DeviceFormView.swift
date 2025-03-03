@@ -39,7 +39,7 @@ struct DeviceFormView: View {
             InputFieldSection(
                 header: "IP ADDRESS",
                 placeholder: "Enter IP Address",
-                tip: "Enter your device's ip address. You can try without the ip address, but entering this ensures it works 100% of the time",
+                tip: "Optionally, enter your device's IP address for a more reliable connection.",
                 text: $ipAddress
             )
             
