@@ -1,148 +1,170 @@
 import Foundation
 import Darwin
 
+@_silgen_name("htons")
+func htons(_ value: UInt16) -> UInt16
+
 public class WakeOnLan {
     
-    public struct Device {
-        public let mac: String
-        public let broadcastAddress: String
-        public let port: Int16
-        
-        public init(mac: String, broadcastAddress: String, port: Int16 = 9) {
-            self.mac = mac
-            self.broadcastAddress = broadcastAddress
-            self.port = port
-        }
-    }
-
     public enum WakeError: Error {
         case socketSetupFailed(reason: String)
         case setSocketOptionsFailed(reason: String)
         case sendMagicPacketFailed(reason: String)
         case invalidBroadcastAddress(reason: String)
+        case invalidDevice(reason: String)
     }
     
-    public static func send(to device: Device) -> Result<Void, WakeError> {
-        // Create UDP socket.
+    // MARK: - Public API
+    
+    /// This version lets you explicitly pass an IP, subnet mask, and port.
+    /// It uses the NetworkConfigurationService to calculate the broadcast.
+    public static func send(to device: WOLDevice, subnetMask: String) -> Result<Void, WakeError> {
+        // Create or inject the NetworkConfigurationService
+        let networkService = NetworkConfigurationService()
+
+        // Validate MAC and IP
+        guard
+            let macAddress = device.macAddress,
+            let ipAddress = device.ipAddress,
+            !macAddress.isEmpty,
+            macAddress.isValidMacAddress,  // <-- Make sure it's .isValidMacAddress (not the negation)
+            !ipAddress.isEmpty
+        else {
+            return .failure(.invalidDevice(reason: "MAC or IP is missing/invalid"))
+        }
+
+        // Figure out port (default if 0).
+        let port = device.port == 0 ? Constants.defaultPort : device.port
+
+        // Use the service to get a broadcast address (instead of the old calculateBroadcastAddress)
+        guard let broadcastAddress = networkService.getBroadcastAddress(forIP: ipAddress,
+                                                                        withSubnetMask: subnetMask)
+        else {
+            return .failure(.invalidBroadcastAddress(reason: "Could not calculate broadcast address"))
+        }
+
+        return sendMagicPacket(macAddress: macAddress,
+                               broadcastAddress: broadcastAddress,
+                               port: port)
+    }
+    
+    /// This version will figure out the current Wi-Fi IP, subnet mask, and broadcast
+    /// if the device doesn’t provide them.
+    public static func send(to device: WOLDevice) -> Result<Void, WakeError> {
+        let networkService = NetworkConfigurationService()
+        
+        // If the device doesn’t have its own IP, we’ll attempt to get the current Wi-Fi IP
+        // and then build the broadcast. Otherwise, we just use the IP + subnet mask approach.
+        
+        // 1. Get the subnet mask (if we don’t have it from the device).
+        guard let subnet = networkService.getSubnetMask() else {
+            return .failure(.invalidBroadcastAddress(reason: "Could not determine subnet mask"))
+        }
+        
+        // 2. If device has an IP, use it; otherwise use our current Wi-Fi IP address.
+        var ipAddress = device.ipAddress
+        if ipAddress == nil || ipAddress?.isEmpty == true {
+            ipAddress = networkService.getCurrentWiFiIPAddress()
+        }
+        
+        // 3. If after all that, we still don’t have an IP, fail.
+        guard let finalIPAddress = ipAddress else {
+            return .failure(.invalidDevice(reason: "No valid IP address found."))
+        }
+        
+        // 4. Now that we have a known IP + subnet, get broadcast.
+        guard let broadcastAddress = networkService
+            .getBroadcastAddress(forIP: finalIPAddress, withSubnetMask: subnet)
+        else {
+            return .failure(.invalidBroadcastAddress(reason: "Could not determine broadcast address"))
+        }
+        
+        // 5. Validate MAC
+        guard
+            let macAddress = device.macAddress,
+            !macAddress.isEmpty,
+            macAddress.isValidMacAddress
+        else {
+            return .failure(.invalidDevice(reason: "MAC address is missing or invalid"))
+        }
+        
+        // 6. Determine port
+        let port = device.port == 0 ? Constants.defaultPort : device.port
+        
+        // 7. Send out the magic packet
+        return sendMagicPacket(macAddress: macAddress,
+                               broadcastAddress: broadcastAddress,
+                               port: port)
+    }
+    
+    // MARK: - Private Helpers
+    
+    /// Opens a UDP socket, configures broadcast, and sends the magic packet.
+    private static func sendMagicPacket(macAddress: String,
+                                        broadcastAddress: String,
+                                        port: Int16) -> Result<Void, WakeError> {
+        
         let sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)
         if sock < 0 {
-            let err = String(cString: strerror(errno))
-            return .failure(.socketSetupFailed(reason: err))
+            return .failure(.socketSetupFailed(
+                reason: String(cString: strerror(errno))
+            ))
         }
         
-        // Prepare the target address.
+        // Prepare target address
         var target = sockaddr_in()
         target.sin_family = sa_family_t(AF_INET)
-        
-        // Determine the broadcast address to use.
-        let broadcastStr: String
-        if device.broadcastAddress.isEmpty || device.broadcastAddress == Constants.defaultBroadcastAddress {
-            if let correctBroadcast = getCurrentBroadcastAddress() {
-                broadcastStr = correctBroadcast
-            } else {
-                broadcastStr = device.broadcastAddress
-            }
-        } else {
-            broadcastStr = device.broadcastAddress
-        }
-        
-        // Resolve the broadcast address string.
-        var bcaddr = inet_addr(broadcastStr)
-        if bcaddr == INADDR_NONE {
-            guard let host = gethostbyname(broadcastStr) else {
-                close(sock)
-                return .failure(.invalidBroadcastAddress(reason: "Unable to resolve broadcast address: \(broadcastStr)"))
-            }
-            memcpy(&bcaddr, host.pointee.h_addr_list[0], Int(host.pointee.h_length))
-        }
-        target.sin_addr.s_addr = bcaddr
-        
-        // Set the port (convert host to network byte order).
-        target.sin_port = _OSSwapInt16(UInt16(device.port))
-        
-        // Create the magic packet.
-        let packet = createMagicPacket(mac: device.mac)
-        let sockaddrLen = socklen_t(MemoryLayout<sockaddr_in>.size)
-        let optionSize = socklen_t(MemoryLayout<Int32>.size)
-        
-        // Enable broadcast on the socket.
-        var broadcast: Int32 = 1
-        if setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &broadcast, optionSize) == -1 {
+        target.sin_addr.s_addr = inet_addr(broadcastAddress)
+        target.sin_port = htons(UInt16(port))
+
+        // Enable broadcast on the socket
+        var broadcastEnable: Int32 = 1
+        if setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &broadcastEnable,
+                      socklen_t(MemoryLayout<Int32>.size)) == -1 {
             close(sock)
-            let err = String(cString: strerror(errno))
-            print(err)
-            return .failure(.setSocketOptionsFailed(reason: err))
+            return .failure(.setSocketOptionsFailed(
+                reason: String(cString: strerror(errno))
+            ))
         }
         
-        // Send the magic packet.
+        // Build the magic packet (6x 0xFF + 16x MAC)
+        let packet = createMagicPacket(mac: macAddress)
+
+        // Send it
         var targetCopy = target
-        let sendResult = withUnsafePointer(to: &targetCopy) {
+        let sentBytes = withUnsafePointer(to: &targetCopy) {
             $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { addrPtr in
-                sendto(sock, packet, packet.count, 0, addrPtr, sockaddrLen)
+                sendto(sock, packet, packet.count, 0,
+                       addrPtr, socklen_t(MemoryLayout<sockaddr_in>.size))
             }
-        }
-        
-        if sendResult != packet.count {
-            close(sock)
-            let err = String(cString: strerror(errno))
-            print(err)
-            return .failure(.sendMagicPacketFailed(reason: err))
         }
         
         close(sock)
+        
+        // Validate the number of bytes actually sent
+        guard sentBytes == packet.count else {
+            return .failure(.sendMagicPacketFailed(reason: "Incomplete packet sent"))
+        }
+        
         return .success(())
     }
-    
-    
+
+    /// Creates the standard WOL Magic Packet
     private static func createMagicPacket(mac: String) -> [UInt8] {
-        var packet = [UInt8]()
-        // 6 bytes of 0xFF header.
-        packet.append(contentsOf: [UInt8](repeating: 0xFF, count: 6))
+        // 6 bytes of 0xFF
+        var packet = [UInt8](repeating: 0xFF, count: 6)
         
-        // Convert the MAC address string (expected format "AA:BB:CC:DD:EE:FF") into bytes.
-        let components = mac.split(separator: ":")
-        let macBytes = components.compactMap { UInt8($0, radix: 16) }
-        guard macBytes.count == 6 else {
-            // If the MAC address is invalid, return an empty packet.
+        // Convert the MAC address (e.g. "AA:BB:CC:DD:EE:FF") to bytes
+        let components = mac.split(separator: ":").compactMap { UInt8($0, radix: 16) }
+        guard components.count == 6 else {
+            // Invalid MAC -> empty packet
             return []
         }
         
-        // Append the MAC address 16 times.
+        // Append the MAC address 16 times
         for _ in 0..<16 {
-            packet.append(contentsOf: macBytes)
+            packet.append(contentsOf: components)
         }
-        
         return packet
-    }
-    
-    /// Calculates the broadcast address from the current Wi‑Fi interface (typically "en0").
-    /// Returns a string in dotted decimal format (e.g. "192.168.1.255") if found.
-    private static func getCurrentBroadcastAddress() -> String? {
-        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
-        guard getifaddrs(&ifaddr) == 0, let firstAddr = ifaddr else { return nil }
-        defer { freeifaddrs(ifaddr) }
-        
-        for ptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
-            let interface = ptr.pointee
-            // We're interested in IPv4 addresses.
-            if interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) {
-                let name = String(cString: interface.ifa_name)
-                // Typically, the Wi‑Fi interface is "en0".
-                if name == "en0" {
-                    // Check if this interface supports broadcast.
-                    if (Int32(interface.ifa_flags) & Int32(IFF_BROADCAST)) != 0,
-                       let dstAddr = interface.ifa_dstaddr {
-                        var addr = dstAddr.pointee
-                        var sockAddr = withUnsafePointer(to: &addr) {
-                            $0.withMemoryRebound(to: sockaddr_in.self, capacity: 1) { $0.pointee.sin_addr }
-                        }
-                        var buffer = [CChar](repeating: 0, count: Int(INET_ADDRSTRLEN))
-                        inet_ntop(AF_INET, &sockAddr, &buffer, socklen_t(INET_ADDRSTRLEN))
-                        return String(cString: buffer)
-                    }
-                }
-            }
-        }
-        return nil
     }
 }
