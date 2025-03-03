@@ -31,7 +31,7 @@ This modular approach not only simplifies the codebase but also makes maintenanc
 
 ### iOS
 
-![iOS Screenshot](https://i.imgur.com/t7ab3xr.png)
+![iOS Screenshot](https://i.imgur.com/k8LgZv8.png)
 
 ### watchOS
 
@@ -39,4 +39,4 @@ This modular approach not only simplifies the codebase but also makes maintenanc
 
 ### Shortcuts
 
-![Shortcuts Screenshot](https://i.imgur.com/BLCeQ7M.png)
+![Shortcuts Screenshot](https://i.imgur.com/Nd9NT0n.png)
