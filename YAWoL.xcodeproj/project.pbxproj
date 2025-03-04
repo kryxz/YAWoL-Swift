@@ -78,12 +78,12 @@
 			membershipExceptions = (
 				Configuration/CloudKitConfig.swift,
 				Configuration/Constants.swift,
+				"Extensions/String+isValidMacAddress.swift",
 				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
 				Services/NetworkConfigurationService.swift,
 				Services/WakeOnLan.swift,
 				Utilities/AppError.swift,
-				"Utilities/String+isValidMacAddress.swift",
 				ViewModels/DevicesListViewModel.swift,
 				ViewModels/DeviceViewModel.swift,
 			);
@@ -94,12 +94,12 @@
 			membershipExceptions = (
 				Configuration/CloudKitConfig.swift,
 				Configuration/Constants.swift,
+				"Extensions/String+isValidMacAddress.swift",
 				Models/YAWoLModel.xcdatamodeld,
 				Persistence/Persistence.swift,
 				Services/NetworkConfigurationService.swift,
 				Services/WakeOnLan.swift,
 				Utilities/AppError.swift,
-				"Utilities/String+isValidMacAddress.swift",
 				ViewModels/DevicesListViewModel.swift,
 				ViewModels/DeviceViewModel.swift,
 			);
