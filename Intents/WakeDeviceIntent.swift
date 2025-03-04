@@ -7,6 +7,7 @@
 
 import AppIntents
 import SwiftUI
+import CoreData
 
 struct WakeDeviceIntent: AppIntent {
     static var title: LocalizedStringResource = "Wake Device"
@@ -19,11 +20,10 @@ struct WakeDeviceIntent: AppIntent {
     var macAddress: String
     
     @Parameter(
-        title: "Broadcast Address",
-        description: "The broadcast address to send the magic packet to.",
-        default: "255.255.255.255"
+        title: "IP Address",
+        description: "The IP address to send the magic packet to."
     )
-    var broadcastAddress: String
+    var ipAddress: String
     
     
     func perform() async throws -> some IntentResult {
@@ -35,11 +35,33 @@ struct WakeDeviceIntent: AppIntent {
             )
         }
         
-        // Use provided broadcast address and port, or default if needed.
-        let finalBroadcast = broadcastAddress.isEmpty ? Constants.defaultBroadcastAddress : broadcastAddress
-        let finalPort = Int16(9)
+        guard !ipAddress.isEmpty else {
+            throw NSError(
+                domain: "WakeDeviceIntent",
+                code: 4,
+                userInfo: [NSLocalizedDescriptionKey: "Invalid or missing IP address."]
+            )
+        }
+
         
-        let wolDevice = WakeOnLan.Device(mac: macAddress, broadcastAddress: finalBroadcast, port: finalPort)
+        let context = PersistenceController.shared.container.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "WOLDevice", in: context) else {
+            throw NSError(
+                domain: "WakeDeviceIntent",
+                code: 3,
+                userInfo: [NSLocalizedDescriptionKey: "Unable to find WOLDevice entity."]
+            )
+        }
+        
+        
+        // Create a temporary WOLDevice without inserting it into the context.
+        let wolDevice = WOLDevice(entity: entity, insertInto: nil)
+        wolDevice.macAddress = macAddress
+        wolDevice.ipAddress = ipAddress
+        wolDevice.port = Int16(9)
+        
+
         let result = WakeOnLan.send(to: wolDevice)
         
         switch result {

@@ -11,7 +11,7 @@ struct AddDeviceView: View {
     // State properties are initialized from the device if available.
     @State private var name: String
     @State private var macAddress: String
-    @State private var broadcastAddress: String
+    @State private var ipAddress: String
     @State private var port: String
 
     // Custom initializer that pre-populates the fields when editing.
@@ -19,7 +19,7 @@ struct AddDeviceView: View {
         self.device = device
         _name = State(initialValue: device?.name ?? "")
         _macAddress = State(initialValue: device?.macAddress ?? "")
-        _broadcastAddress = State(initialValue: device?.broadcastAddress ?? Constants.defaultBroadcastAddress)
+        _ipAddress = State(initialValue: device?.ipAddress ?? "")
         _port = State(initialValue: device != nil ? String(device!.port) : String(Constants.defaultPort))
     }
     
@@ -37,11 +37,11 @@ struct AddDeviceView: View {
                 .padding(.top, 20)
                 .padding(.bottom, 10)
                 
-                // Extracted form view.
+                
                 DeviceFormView(
                     name: $name,
                     macAddress: $macAddress,
-                    broadcastAddress: $broadcastAddress,
+                    ipAddress: $ipAddress,
                     port: $port
                 )
                 
@@ -67,7 +67,7 @@ struct AddDeviceView: View {
             // Update existing device.
             device.name = name
             device.macAddress = macAddress
-            device.broadcastAddress = broadcastAddress
+            device.ipAddress = ipAddress
             if let portNumber = Int16(port) {
                 device.port = portNumber
             } else {
@@ -78,7 +78,7 @@ struct AddDeviceView: View {
             let newDevice = WOLDevice(context: viewContext)
             newDevice.name = name
             newDevice.macAddress = macAddress
-            newDevice.broadcastAddress = broadcastAddress
+            newDevice.ipAddress = ipAddress
             if let portNumber = Int16(port) {
                 newDevice.port = portNumber
             } else {
@@ -107,7 +107,7 @@ struct AddDeviceView_Previews: PreviewProvider {
             let device = WOLDevice(context: context)
             device.name = Constants.defaultDeviceName
             device.macAddress = Constants.defaultMacAddress
-            device.broadcastAddress = Constants.defaultBroadcastAddress
+            device.ipAddress = Constants.defaultIpAddress
             device.port = Constants.defaultPort
             return AddDeviceView(device: device)
                 .environment(\.managedObjectContext, context)
